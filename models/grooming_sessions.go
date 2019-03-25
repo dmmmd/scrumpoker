@@ -7,16 +7,15 @@ import (
 	"upper.io/db.v3"
 )
 
-const TABLE string = "grooming_sessions"
+const table string = "grooming_sessions"
 
 type GroomingSession struct {
-	//ID    int64  `db:"id,omitempty" json:"id,omitempty"`
 	ID    uuid.UUID `db:"id,omitempty" json:"id,omitempty"`
 	Title string    `db:"title" json:"title"`
 }
 
 func NewGroomingSessionsCollection() (db.Collection, error) {
-	return database.NewCollection(TABLE)
+	return database.NewCollection(table)
 }
 
 func StoreGroomingSession(model *GroomingSession) (*GroomingSession, error) {
