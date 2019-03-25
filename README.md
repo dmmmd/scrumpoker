@@ -4,8 +4,10 @@ Scrum Poker without features. Just a poker for Scrum. If you use Scrum -- this p
 # Installation
 ```
 cd docker
-docker-compose up --remove-orphans --detach
+docker-compose up --detach
 ```
+
+# Usage (obviously not everything ready yet)
 Open your browser at http://127.0.0.1/ or create a session:
 ```
 > curl -i -d '{"title":"My session A"}' -H "Content-Type: application/json" -X POST http://127.0.0.1/grooming_sessions
