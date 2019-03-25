@@ -5,11 +5,8 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'scrumpoker'
-      # So you don't have to use root, but you can if you like
       MYSQL_USER: 'scrumpoker'
-      # You can use whatever password you like
       MYSQL_PASSWORD: 'hYnRDFfWGdPCCG8BcKpZUvxWz6YaM3'
-      # Password for root access
       MYSQL_ROOT_PASSWORD: 'TdfHCz;9skghgACcNKXrL*jTbaA9K7ss'
     ports:
       # <Port exposed> : < MySQL Port running inside container>
