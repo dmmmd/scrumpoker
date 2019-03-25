@@ -15,8 +15,6 @@ type GroomingSession struct {
 	Title string    `db:"title" json:"title"`
 }
 
-// TODO Make sure to generate UUID on insert
-
 func NewGroomingSessionsCollection() (db.Collection, error) {
 	return database.NewCollection(TABLE)
 }
