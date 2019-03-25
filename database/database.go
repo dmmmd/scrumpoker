@@ -7,10 +7,10 @@ import (
 )
 
 var databaseConfig = mysql.ConnectionURL{
-	User:     `root`,
+	User:     `scrumpoker`,
 	Database: `scrumpoker`,
-	Host:     `localhost:6603`,
-	Password: `scrumUmad9001`,
+	Host:     `mysql:3306`,
+	Password: `hYnRDFfWGdPCCG8BcKpZUvxWz6YaM3`,
 }
 
 func NewCollection(name string) (db.Collection, error) {

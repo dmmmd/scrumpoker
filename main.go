@@ -14,7 +14,7 @@ import (
 func main() {
 	r := buildRouter()
 
-	err := http.ListenAndServe(":9090", r)
+	err := http.ListenAndServe(":80", r)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
