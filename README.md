@@ -6,9 +6,8 @@ Scrum Poker without features. Just a poker for Scrum. If you use Scrum -- this p
 cd docker
 docker-compose up --remove-orphans --detach
 ```
-Open your browser at http://127.0.0.1/ or
+Open your browser at http://127.0.0.1/ or create a session:
 ```
-# Create a session
 > curl -i -d '{"title":"My session A"}' -H "Content-Type: application/json" -X POST http://127.0.0.1/grooming_sessions
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
@@ -16,8 +15,9 @@ Date: Mon, 25 Mar 2019 20:56:37 GMT
 Content-Length: 69
 
 {"id":"7b4df44c-4f40-11e9-ab33-0242c0a80003","title":"My session A"}
-
-# Create another one
+```
+Create another one:
+```
 > curl -i -d '{"title":"My session B"}' -H "Content-Type: application/json" -X POST http://127.0.0.1/grooming_sessions
 http://127.0.0.1/grooming_sessions
 HTTP/1.1 201 Created
@@ -26,8 +26,9 @@ Date: Mon, 25 Mar 2019 20:56:56 GMT
 Content-Length: 69
 
 {"id":"863ae512-4f40-11e9-ab33-0242c0a80003","title":"My session B"}
-
-# Get session by ID
+```
+Get session by ID:
+```
 > curl -i http://127.0.0.1/grooming_sessions/7b4df44c-4f40-11e9-ab33-0242c0a80003 # Use your unique ID, of course
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -35,8 +36,9 @@ Date: Mon, 25 Mar 2019 20:57:31 GMT
 Content-Length: 69
 
 {"id":"7b4df44c-4f40-11e9-ab33-0242c0a80003","title":"My session A"}
-
-# List all sessions
+```
+List all sessions
+```
 > curl -i http://127.0.0.1/grooming_sessions                                     
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
