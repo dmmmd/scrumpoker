@@ -1,5 +1,7 @@
 # noinspection SqlNoDataSourceInspectionForFile
 
+USE `scrumpoker`;
+
 CREATE TABLE IF NOT EXISTS `grooming_sessions`
 (
   `id`    char(36)     NOT NULL DEFAULT '',

@@ -17,9 +17,11 @@ services:
     expose:
       # Opens port 3306 on the container
       - '3306'
+    command: --init-file /data/application/init.sql
     volumes:
       # Where our data will be persisted
       - scrumpoker-db-volume:/var/lib/mysql
+      - ./db/init.sql:/data/application/init.sql
   scrumpoker-server:
     build: server
     ports:
