@@ -50,7 +50,7 @@ Content-Length: 604
 [{"id":"101289b1-4f3f-11e9-ab33-0242c0a80003","title":"Session E"},{"id":"1299b975-4f3f-11e9-ab33-0242c0a80003","title":"Session F"},{"id":"2e965e98-4f3d-11e9-aaad-0242ac1b0003","title":"Session A"},{"id":"3225f03f-4f3d-11e9-aaad-0242ac1b0003","title":"Session B"},{"id":"3555dc35-4f3d-11e9-aaad-0242ac1b0003","title":"Session C"},{"id":"38b473ea-4f3d-11e9-aaad-0242ac1b0003","title":"Session D"},{"id":"3d9ec663-4f40-11e9-ab33-0242c0a80003","title":"Session 100"},{"id":"7b4df44c-4f40-11e9-ab33-0242c0a80003","title":"My session A"},{"id":"863ae512-4f40-11e9-ab33-0242c0a80003","title":"My session B"}]
 ```
 
-To bring it down:
+# Stop the server
 ```
 docker-compose down
 ```
