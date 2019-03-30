@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/dmmmd/scrumpoker/controller"
-	"github.com/dmmmd/scrumpoker/grooming_session"
+	"github.com/dmmmd/scrumpoker/grooming_session/api"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"log"
@@ -32,7 +32,7 @@ func buildRouter() *chi.Mux {
 	r.Get("/", actionHomepage)
 	r.Get("/actionEcho", actionEcho)
 
-	r.Route("/grooming_sessions", grooming_session.Router)
+	r.Route("/grooming_sessions", api.Router)
 
 	return r
 }
