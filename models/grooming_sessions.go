@@ -1,50 +1,39 @@
 package scrumpoker_models
 
 import (
-	"github.com/dmmmd/scrumpoker/database"
-	"github.com/google/uuid"
 	"log"
-	"upper.io/db.v3"
 )
 
 const table string = "grooming_sessions"
 
 type GroomingSession struct {
-	ID    uuid.UUID `db:"id,omitempty" json:"id,omitempty"`
-	Title string    `db:"title" json:"title"`
+	AbstractModel
+	Title string `db:"title" json:"title"`
 }
 
-func NewGroomingSessionsCollection() (db.Collection, error) {
-	return database.NewCollection(table)
+func NewGroomingSession() *GroomingSession {
+	return &GroomingSession{AbstractModel: *newAbstractModel(table)}
 }
 
-func StoreGroomingSession(model *GroomingSession) (*GroomingSession, error) {
-	// TODO improve UUID generation
-	id, err := uuid.NewUUID()
-	if nil != err {
-		return nil, err
-	}
+// Storage
 
-	model.ID = id
-
-	collection, _ := NewGroomingSessionsCollection()
-	_, err = collection.Insert(model)
-	if nil != err {
-		return nil, err
-	}
-
-	return model, nil
+type GroomingSessionStorage struct {
+	Storage
 }
 
-func LoadGroomingSession(id string) (*GroomingSession, error) {
-	collection, _ := NewGroomingSessionsCollection()
+func NewGroomingSessionStorage() *GroomingSessionStorage {
+	storage := NewStorage(NewGroomingSession().GetTableName())
+	return &GroomingSessionStorage{storage}
+}
 
-	var model GroomingSession
-	err := collection.Find(db.Cond{"id": id}).One(&model)
+func (s GroomingSessionStorage) Load(id string) (*GroomingSession, error) {
+	var m GroomingSession
+
+	err := s.Storage.prepareLoadById(id).One(&m)
 	if err != nil {
-		log.Printf("collection.One(): %q\n", err)
+		log.Printf("Cannot load model: %q\n", err)
 		return nil, err
 	}
 
-	return &model, nil
+	return &m, nil
 }
