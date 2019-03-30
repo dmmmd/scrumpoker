@@ -68,7 +68,7 @@ func (post *GroomingSessionRequest) Bind(r *http.Request) error {
 // Actions
 
 func actionIndex(w http.ResponseWriter, r *http.Request) {
-	collection, _ := scrumpoker_models.NewGroomingSessionsCollection()
+	collection, _ := scrumpoker_models.NewGroomingSessionStorage().NewCollection()
 
 	var models []scrumpoker_models.GroomingSession
 	err := collection.Find().All(&models)
@@ -92,14 +92,14 @@ func actionPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	model, err := scrumpoker_models.StoreGroomingSession(data.GroomingSession)
+	model, err := scrumpoker_models.NewGroomingSessionStorage().Store(data.GroomingSession)
 	if nil != err {
 		SendErrorResponse(w, r, NewErrServerError(err))
 		return
 	}
 
 	render.Status(r, http.StatusCreated)
-	SendRestItemResponse(w, r, newResponse(model))
+	SendRestItemResponse(w, r, newResponse(model.(*scrumpoker_models.GroomingSession)))
 }
 
 // Middleware
@@ -113,7 +113,7 @@ func itemContext(next http.Handler) http.Handler {
 		var err error
 
 		if id := chi.URLParam(r, "ID"); id != "" {
-			model, err = scrumpoker_models.LoadGroomingSession(id)
+			model, err = scrumpoker_models.NewGroomingSessionStorage().Load(id)
 		} else {
 			SendErrorResponse(w, r, NewErrNotFound())
 			return
