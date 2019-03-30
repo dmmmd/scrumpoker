@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/dmmmd/scrumpoker/controllers"
+	"github.com/dmmmd/scrumpoker/controller"
+	"github.com/dmmmd/scrumpoker/grooming_session"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"log"
@@ -31,7 +32,7 @@ func buildRouter() *chi.Mux {
 	r.Get("/", actionHomepage)
 	r.Get("/actionEcho", actionEcho)
 
-	r.Route("/grooming_sessions", controllers.GroomingSessionsRouter)
+	r.Route("/grooming_sessions", grooming_session.Router)
 
 	return r
 }
@@ -51,7 +52,7 @@ func actionHomepage(w http.ResponseWriter, r *http.Request) {
 		"</ul>" +
 		"</body>" +
 		"</html>"
-	controllers.SendRawResponse(w, body)
+	controller.SendRawResponse(w, body)
 }
 
 func actionEcho(w http.ResponseWriter, r *http.Request) {
@@ -61,7 +62,7 @@ func actionEcho(w http.ResponseWriter, r *http.Request) {
 	for k, v := range r.Form {
 		body += fmt.Sprintf("%s:\t%s\n", k, strings.Join(v, ""))
 	}
-	controllers.SendRawResponse(w, body)
+	controller.SendRawResponse(w, body)
 }
 
 // Other
