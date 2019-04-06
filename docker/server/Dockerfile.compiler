@@ -1,13 +1,11 @@
 FROM golang:latest
-RUN mkdir /scrumpoker
 RUN mkdir -p /go/src/github.com/dmmmd/scrumpoker
 RUN ln -s /go/src/github.com/dmmmd/scrumpoker /scrumpoker
+ADD main.go /scrumpoker
+ADD go.* /scrumpoker/
+ADD app /scrumpoker/app
+WORKDIR /go/src/github.com/dmmmd/scrumpoker
 ENV GOPATH /go
 ENV GO111MODULE on
-ADD main.go /go/src/github.com/dmmmd/scrumpoker
-ADD go.* /go/src/github.com/dmmmd/scrumpoker/
-ADD app /go/src/github.com/dmmmd/scrumpoker/app
-WORKDIR /go/src/github.com/dmmmd/scrumpoker
-# RUN go build -o /scrumpoker/main .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /scrumpoker/scrumpoker .
 CMD ["/scrumpoker/scrumpoker"]
