@@ -1,4 +1,6 @@
-# First, build a binary for Linux manually
+# We expect that ./scrumpoker binary file is present in current directory
+# It would be if you compile it using README
+# To build it manually:
 # CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./docker/server/scrumpoker .
 FROM scratch
 ADD scrumpoker /
