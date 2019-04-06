@@ -20,7 +20,9 @@ services:
       - scrumpoker-db-volume:/var/lib/mysql
       - ./db/init.sql:/data/application/init.sql
   scrumpoker-server:
-    build: server
+    build:
+      context: server
+      dockerfile: Dockerfile.scratch
     ports:
       - "80:80"
     links:
