@@ -2,10 +2,27 @@
 Scrum Poker without features. Just a poker for Scrum. If you use Scrum -- this poker will work. Only within Scrum shall you use this poker.
 
 # Installation
+Your only requirement is to have Docker and git installed.
+
+Compile the application and prepare Docker containers:
 ```
-cd docker
-docker-compose up --detach
+git clone git@github.com:dmmmd/scrumpoker.git
+cd scrumpoker
+./compile.sh
 ```
+
+Run the server:
+```
+./start.sh
+```
+It will take some time at first, but then every time start will be instant.
+
+Stop:
+```
+./stop.sh
+```
+
+Use standard Docker commands to access logs or remove containers and images altogether.
 
 # Usage (obviously not everything ready yet)
 Open your browser at http://127.0.0.1/ or create a session:
