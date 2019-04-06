@@ -2,7 +2,7 @@ package api
 
 import (
 	"errors"
-	"github.com/dmmmd/scrumpoker/grooming_session"
+	"github.com/dmmmd/scrumpoker/app/grooming_session"
 	"github.com/go-chi/render"
 	"net/http"
 )

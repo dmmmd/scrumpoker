@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/dmmmd/scrumpoker/controller"
-	"github.com/dmmmd/scrumpoker/grooming_session/api"
+	"github.com/dmmmd/scrumpoker/app/controller"
+	"github.com/dmmmd/scrumpoker/app/grooming_session/api"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"log"

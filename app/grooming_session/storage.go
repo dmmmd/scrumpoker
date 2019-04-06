@@ -1,7 +1,7 @@
 package grooming_session
 
 import (
-	"github.com/dmmmd/scrumpoker/storage"
+	"github.com/dmmmd/scrumpoker/app/storage"
 	"log"
 )
 

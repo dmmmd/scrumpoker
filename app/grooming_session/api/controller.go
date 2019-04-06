@@ -2,8 +2,8 @@ package api
 
 import (
 	"context"
-	"github.com/dmmmd/scrumpoker/controller"
-	"github.com/dmmmd/scrumpoker/grooming_session"
+	"github.com/dmmmd/scrumpoker/app/controller"
+	"github.com/dmmmd/scrumpoker/app/grooming_session"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
 	"log"

@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"github.com/dmmmd/scrumpoker/database"
+	"github.com/dmmmd/scrumpoker/app/database"
 	"github.com/google/uuid"
 	"upper.io/db.v3"
 )
