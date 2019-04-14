@@ -2,6 +2,7 @@ package grooming_session
 
 import (
 	"github.com/dmmmd/scrumpoker/app/storage"
+	"github.com/google/uuid"
 	"log"
 )
 
@@ -24,4 +25,14 @@ func (s GroomingSessionStorage) Load(id string) (*GroomingSession, error) {
 	}
 
 	return &m, nil
+}
+
+func (s GroomingSessionStorage) Delete(id uuid.UUID) error {
+	err := s.Storage.PrepareLoadById(id.String()).Delete()
+	if err != nil {
+		log.Printf("Cannot delete model: %q\n", err)
+		return err
+	}
+
+	return nil
 }

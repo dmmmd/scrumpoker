@@ -20,7 +20,7 @@ func Router(r chi.Router) {
 		r.Use(controller.CreateItemContext(injectModel))
 		r.Get("/", actionItem)
 		//	r.Put("/", actionPut)
-		//	r.Delete("/", actionDelete)
+		r.Delete("/", actionDelete)
 	})
 }
 
@@ -59,6 +59,19 @@ func actionPost(w http.ResponseWriter, r *http.Request) {
 
 	render.Status(r, http.StatusCreated)
 	controller.SendRestItemResponse(w, r, NewItemResponse(model.(*grooming_session.GroomingSession)))
+}
+
+func actionDelete(w http.ResponseWriter, r *http.Request) {
+	model := r.Context().Value("model").(*grooming_session.GroomingSession)
+
+	err := grooming_session.NewGroomingSessionStorage().Delete(model.GetId())
+	if nil != err {
+		controller.SendErrorResponse(w, r, controller.NewErrServerError(err))
+		return
+	}
+
+	w.WriteHeader(204)
+	controller.SendRawResponse(w, "")
 }
 
 // Middleware
