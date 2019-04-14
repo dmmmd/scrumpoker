@@ -50,7 +50,16 @@ func TestGetReturnsCreatedModel(t *testing.T) {
 	sendDeleteModel(t, storedId)
 }
 
-func TestDeleteModel(t *testing.T) {
+func TestGetReturns404OnNotFound(t *testing.T) {
+	_ = api.Get("/grooming_sessions/not-found-id").
+		Expect(t).
+		Status(404).
+		Type("application/json").
+		BodyMatchString("Resource not found").
+		Done()
+}
+
+func TestDeleteRemovesModel(t *testing.T) {
 	title := getRandomTitle()
 
 	newModel := grooming_session.NewGroomingSession()
@@ -61,6 +70,15 @@ func TestDeleteModel(t *testing.T) {
 
 	sendDeleteModel(t, storedId)
 	_ = api.Get("/grooming_sessions/" + storedId).
+		Expect(t).
+		Status(404).
+		Type("application/json").
+		BodyMatchString("Resource not found").
+		Done()
+}
+
+func TestDeleteReturns404OnNotFound(t *testing.T) {
+	_ = api.Delete("/grooming_sessions/not-found-id").
 		Expect(t).
 		Status(404).
 		Type("application/json").
