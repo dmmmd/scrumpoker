@@ -24,6 +24,14 @@ Stop:
 
 Use standard Docker commands to access logs or remove containers and images altogether.
 
+# Testing
+Only integration API tests so far.
+I need to define another container for testing, so that it wouldn't modify "real" database.
+For now, tests run locally with all containers started:
+```
+go test ./...
+```
+
 # Usage (obviously not everything ready yet)
 Open your browser at http://127.0.0.1/ or create a session:
 ```
